@@ -82,9 +82,9 @@ def grant_ownership(service, drive_item, prefix, permission_id, show_already_own
 
 def process_all_files(service, callback=None, callback_args=None, minimum_prefix=None, current_prefix=None, folder_id='root'):
     if minimum_prefix is None:
-        minimum_prefix = []
+        minimum_prefix = [""]
     if current_prefix is None:
-        current_prefix = []
+        current_prefix = [""]
     if callback_args is None:
         callback_args = []
 
@@ -129,7 +129,7 @@ def main():
     service = get_drive_service()
     permission_id = get_permission_id_for_email(service, new_owner)
     print('User {} is permission ID {}.'.format(new_owner, permission_id))
-    process_all_files(service, grant_ownership, {'permission_id': permission_id, 'show_already_owned': show_already_owned }, minimum_prefix_split)
+    process_all_files(service, grant_ownership, {'permission_id': permission_id, 'show_already_owned': show_already_owned }, minimum_prefix_split, folder_id="YOUR_FOLDER_ID")
     #print(files)
 
 
